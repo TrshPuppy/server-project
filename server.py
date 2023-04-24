@@ -1,0 +1,26 @@
+# from flask import Flask as trsh_puppy_is_learning_python # Flas -@Gaped
+# from flask import make_response
+
+# danger_fart = trsh_puppy_is_learning_python("flask_thing") # app - @Packer
+
+# @danger_fart.route("/", methods=["GET"])
+# def hello_world():
+#     return "<p>Hello, World!</p>"
+
+
+import socket
+
+HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+PORT = 5000  # Port to listen on (non-privileged ports are > 1023)
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as Socktopus:
+    Socktopus.bind((HOST, PORT))
+    Socktopus.listen()
+    conn, addr = Socktopus.accept()
+    with conn:
+        print(f"Connected by {addr}")
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)

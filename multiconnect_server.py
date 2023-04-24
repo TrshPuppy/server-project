@@ -18,8 +18,11 @@ def service_connection(key, mask):
     sock = key.fileobj
     data = key.data
     if mask & selectors.EVENT_READ:
-        recv_data = sock.recv(1024)  # Should be ready to read
+        recv_data = sock.recv(
+            1024
+        )  # This is where the stream of incoming bytes is read (.recv())
         if recv_data:
+            # received data needs to be saved in a buffer:
             data.outb += recv_data
         else:
             print(f"Closing connection to {data.addr}")

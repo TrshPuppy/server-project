@@ -12,7 +12,7 @@ AI art pictures from my [Twitch](https://www.twitch.tv/trshpuppy) stream which a
 ## Technologies:
 
 - Python
-  ~~- Flask~~
+- ~~Flask~~
 - Docker (for containerization)
 - Locust (for load testing)
 - [Socket API](https://realpython.com/python-sockets/#multi-connection-client-and-server)

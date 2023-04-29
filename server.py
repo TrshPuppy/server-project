@@ -12,11 +12,11 @@ HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
 PORT = 5000  # Port to listen on (non-privileged ports are > 1023)
 
 
-class Bananananananananas:
+class Bananananananananas:  # Message - @GapedBrain
     def __init__(self, ID, mode, sock, host, port):
         self.ID = ID
         self.mode = mode
-        self.suck = sock
+        self.suck = sock  # self.sock - @rulerlefi
         self.addr = [host, port]
         self.header_one = None
         self.header_two = None
@@ -53,6 +53,29 @@ class Bananananananananas:
         return
 
 
+def start_socket_listen():
+    message_ID = 0
+    Socktopus = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # socket
+    Socktopus.bind((HOST, PORT))
+    Socktopus.listen()
+
+    connection, address = Socktopus.accept()
+    with connection:
+        print(f"Connection to: {address}")
+        while True:
+            if connection.recv(1024):
+                message = Bananananananananas(
+                    message_ID, "r", Socktopus, address[0], address[1]
+                )
+                if message.message_complete:
+                    print("message complete: " + message)
+                    connection.sendall(message.message_string.encode("utf-8", "strict"))
+                    Socktopus.close()
+                    message_ID += 1
+                    break
+
+
+start_socket_listen()
 """
  message:
     properties:
@@ -91,18 +114,18 @@ class Bananananananananas:
 
 
 # Make the socket:
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as Socktopus:
-    Socktopus.bind((HOST, PORT))
-    Socktopus.listen()
-    connection, address = Socktopus.accept()
-    with connection:
-        print(f"Connected by {address}")
-        while True:
-            data = connection.recv(1024)  # blocking?
-            print(data.decode("utf-8", "replace"))
-            if not data:
-                break
-            connection.sendall(data)
+# with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as Socktopus:
+#     Socktopus.bind((HOST, PORT))
+#     Socktopus.listen()
+#     connection, address = Socktopus.accept()
+#     with connection:
+#         print(f"Connected by {address}")
+#         while True:
+#             data = connection.recv(1024)  # blocking?
+#             print(data.decode("utf-8", "replace"))
+#             if not data:
+#                 break
+#             connection.sendall(data)
 
 
 """

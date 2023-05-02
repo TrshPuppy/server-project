@@ -2,6 +2,7 @@
 pseudo.md
 assets/*
 roadmap.md
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
